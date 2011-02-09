@@ -54,7 +54,7 @@ Location.prototype = {
 						search.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
 				}
 			}
-			_search = search.join('&');
+			_search = '?' + search.join('&');
 		}
 
 		with (this) ret.init.apply(ret, [
@@ -69,7 +69,7 @@ Location.prototype = {
 		return ret;
 	}
 };
-Location.regexp = new RegExp('^(https?:)//(([^:/]+)(:[^/]+)?)([^#?]*)(\\?[^#]*)?(#.*)?$');
+Location.regexp = new RegExp('^(?:(https?:)//(([^:/]+)(:[^/]+)?))?([^#?]*)(\\?[^#]*)?(#.*)?$');
 Location.parse = function (string) {
 	var matched = string.match(this.regexp);
 	var ret = new Location();
