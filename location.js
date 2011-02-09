@@ -9,7 +9,14 @@ Location.prototype = {
 		this.pathname  = pathname || "";
 		this.search    = search || "";
 		this.hash      = hash || "";
-		this.href      = Array.prototype.join.call(arguments, "");
+		if (protocol) {
+			with (this) this.href = protocol + '//' + host + pathname + search + hash;
+		} else
+		if (host) {
+			with (this) this.href = '//' + host + pathname + search + hash;
+		} else {
+			with (this) this.href = pathname + search + hash;
+		}
 	},
 
 	params : function (name) {
@@ -75,4 +82,6 @@ Location.parse = function (string) {
 	var ret = new Location();
 	ret.init.apply(ret, matched.slice(1));
 	return ret;
-}
+};
+
+this.Location = Location;
