@@ -33,3 +33,8 @@ console.log(l.pathname == '/');
 
 l = l.params({ foo : 'bar' });
 console.log(l.href == '/?foo=bar');
+
+l = Location.parse('http://example.com/');
+l.params({ foo : 'bar' });
+console.log(l.href == 'http://example.com/');
+console.log(l.params('foo') == null);

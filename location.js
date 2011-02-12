@@ -38,16 +38,17 @@ Location.prototype = {
 
 		switch (typeof name) {
 			case "undefined": return this._params;
-			case "object"   : return this.build(this._params = name);
+			case "object"   : return this.build(name);
 		}
 		return this._params[name] ? this._params[name][0] : null;
 	},
 
-	build : function () {
+	build : function (params) {
+		if (!params) params = this._params;
+
 		var ret = new Location();
 		var _search = this.search;
-		if (this._params) {
-			var params = this._params;
+		if (params) {
 			var search = [];
 			for (var key in params) if (params.hasOwnProperty(key)) {
 				var val = params[key];
