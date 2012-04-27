@@ -1,0 +1,21 @@
+{
+  "author": "cho45 <cho45@lowreal.net> (http://www.lowreal.net/)",
+  "name": "micro-location.js",
+  "description": "Location object for both browser and node.js.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/cho45/micro-location.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cho45/micro-location.js.git"
+  },
+  "main": "lib/micro-location.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
