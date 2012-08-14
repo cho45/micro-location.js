@@ -1,6 +1,6 @@
 {
   "author": "cho45 <cho45@lowreal.net> (http://www.lowreal.net/)",
-  "name": "micro-location.js",
+  "name": "micro-location",
   "description": "Location object for both browser and node.js.",
   "version": "0.1.1",
   "homepage": "https://github.com/cho45/micro-location.js",
