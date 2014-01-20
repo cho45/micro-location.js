@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var assert = require('assert');
+var assert = require('assert'); decorate();
 
 var Location = require('../lib/micro-location.js').Location;
 
@@ -44,3 +44,19 @@ l.params({ foo : 'bar' });
 assert.equal(l.href, 'http://example.com/');
 assert.equal(l.params('foo'), null);
 
+function decorate () {
+	function note (c) {
+		if (!note._content) note._content = require('fs').readFileSync(__filename, 'utf-8').split(/\n/);
+		if (!c) c = 0;
+		var n = new Error().stack.split(/\n/)[2 + c].split(/:/)[1];
+		console.error('L' + n + ': ' + note._content[n-1]);
+		return note._content[n];
+	}
+
+	for (var key in assert) if (assert.hasOwnProperty(key)) (function (orig) {
+		assert[key] = function () {
+			Array.prototype.push.call(arguments, note(1));
+			orig.apply(assert, arguments);
+		};
+	})(assert[key]);
+}
