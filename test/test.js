@@ -9,6 +9,7 @@ var l;
 l = Location.parse('http://example.com/');
 assert.equal(l.href, 'http://example.com/');
 assert.equal(l.pathname, '/');
+assert.deepEqual(l.params(), {});
 
 l = Location.parse('http://example.com/#baz');
 assert.equal(l.href, 'http://example.com/#baz');
@@ -18,6 +19,7 @@ l = Location.parse('http://example.com/?foo=bar');
 assert.equal(l.href, 'http://example.com/?foo=bar');
 assert.equal(l.pathname, '/');
 assert.equal(l.search, '?foo=bar');
+assert.deepEqual(l.params(), { foo : [ 'bar' ]});
 
 l = Location.parse('http://example.com/?foo=bar#baz');
 assert.equal(l.href, 'http://example.com/?foo=bar#baz');
@@ -28,6 +30,10 @@ l = l.params({
 	baz : ['aaa', 'bbb']
 });
 assert.equal(l.href, 'http://example.com/?foo=bar&baz=aaa&baz=bbb#baz');
+assert.deepEqual(l.params(), {
+	foo : [ 'bar' ],
+	baz : ['aaa', 'bbb']
+});
 
 l = Location.parse('//example.com/foo');
 assert.equal(l.href, '//example.com/foo');
