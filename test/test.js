@@ -50,6 +50,9 @@ l.params({ foo : 'bar' });
 assert.equal(l.href, 'http://example.com/');
 assert.equal(l.params('foo'), null);
 
+l = Location.parse('http://example.com/?q=%20+%2B');
+assert.equal(l.params('q'), '  +');
+
 function decorate () {
 	function note (c) {
 		if (!note._content) note._content = require('fs').readFileSync(__filename, 'utf-8').split(/\n/);
