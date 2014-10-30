@@ -11,7 +11,7 @@ SYNOPSIS
 	l.href //=> 'http://example.com/?foo=bar#baz'
 	l.pathname //=> '/'
 	l.search  //=> '?foo=bar'
-	l.params('foo'), 'bar');
+	l.params('foo') //=> 'bar';
 
 
 LICENSE
