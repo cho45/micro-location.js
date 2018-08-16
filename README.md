@@ -1,3 +1,6 @@
+You may use URL standard interface: https://developer.mozilla.org/ja/docs/Web/API/URL and polyfill https://github.com/lifaon74/url-polyfill 
+
+
 Micro-Location.js
 =================
 
